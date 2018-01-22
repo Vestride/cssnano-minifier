@@ -1,0 +1,20 @@
+{
+  "name": "cssnano-online",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.1",
+    "cssnano": "^4.0.0-rc.2",
+    "express": "^4.16.2",
+    "helmet": "^3.9.0",
+    "postcss": "^6.0.16",
+    "pug": "^2.0.0-rc.4"
+  }
+}

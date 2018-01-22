@@ -1,0 +1,143 @@
+html {
+  box-sizing: border-box;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  color: #404040;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+main {
+  display: block;
+  overflow: hidden;
+}
+
+blockquote {
+  padding: 0 15px;
+  margin: 0 0 16px;
+  color: #777777;
+  border-left: 4px solid #dddddd;
+}
+
+blockquote p {
+  margin: 0;
+}
+
+a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.table-center-wrap {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.table-center {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.container {
+  position: relative;
+  width: 93%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.clearfix:before,
+.clearfix:after,
+.container:before,
+.container:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after,
+.container:after {
+  clear: both;
+}
+
+.half {
+  float: left;
+  width: 50%;
+}
+
+.space-bottom {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 1600px) {
+  body {
+    font-size: 1.2em;
+  }
+
+  .container {
+    max-width: 1400px;
+  }
+}
+
+main {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: 1fr auto;
+}
+
+footer {
+  grid-column: 1 / -1;
+  display: grid;
+  align-items: center;
+  justify-content: start;
+  height: 40px;
+  padding-left: 16px;
+  background-color: #404040;
+  color: #ffffff;
+}
+
+.drop-zone {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  background-color: rgb(250, 250, 250);
+  border-right: 1px solid #404040;
+  text-align: center;
+}
+
+.can-drop .drop-zone {
+  background-color: mediumseagreen;
+  color: white;
+}
+
+output {
+  min-height: 200px;
+  border-left: 1px solid #404040;
+  background-color: rgb(250, 250, 250);
+}
+
+.drop-zone,
+output {
+  width: 100%;
+}

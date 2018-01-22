@@ -1,0 +1,23 @@
+doctype html
+html.no-js(lang="")
+  head
+    meta(charset="utf-8")
+    title Minify some css
+    meta(name="description" content="")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+
+    link(rel="stylesheet" href="css/style.css")
+  body
+    main(role="main" id="main")
+      .drop-zone
+        div
+          h1 Drop a CSS file here
+          p It will be minified with cssnano and the output shown on the right.
+        p
+          span or pick a file&#32;
+          input(type="file", id="the-file")
+      output
+      footer
+        div Full list of optimizations <a href="http://cssnano.co/optimisations/">http://cssnano.co/optimisations/</a>
+
+    script(src="js/script.js", defer)
