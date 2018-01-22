@@ -26,13 +26,17 @@ app.get('/', (req, res) => {
 });
 
 app.post('/api', jsonParser, (req, res) => {
-  const { name, text } = req.body;
+  const { name, text, preset } = req.body;
 
   if (!text) {
     return res.sendStatus(400);
   }
 
-  return postcss([cssnano]).process(text, {
+  return postcss([
+    cssnano({
+      preset: [preset],
+    }),
+  ]).process(text, {
     from: name,
     to: name,
   }).then((result) => {

@@ -9,6 +9,11 @@ html.no-js(lang="")
     link(rel="stylesheet" href="css/style.css")
   body
     main(role="main" id="main")
+      #options-panel.options-panel(aria-hidden="true")
+        label.option(for="preset") Preset
+        select(id="preset")
+          option(value="default") default
+          option(value="advanced") advanced
       .drop-zone
         div
           h1 Drop a CSS file here
@@ -18,6 +23,7 @@ html.no-js(lang="")
           input(type="file", id="the-file")
       output
       footer
+        button.show-options(aria-controls="options-panel", aria-expanded="false", data-show-content="Show options", data-hide-content="Hide options") Show options
         div Full list of optimizations <a href="http://cssnano.co/optimisations/">http://cssnano.co/optimisations/</a>
 
     script(src="js/script.js", defer)

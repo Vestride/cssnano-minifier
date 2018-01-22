@@ -1,3 +1,7 @@
+let css;
+let filename;
+let currentPreset = 'default';
+
 function readFileAsText(file) {
   return new Promise((resolve) => {
     const reader = new FileReader();
@@ -12,18 +16,18 @@ function readFileAsText(file) {
   });
 }
 
-/**
- * @param {File} file
- */
-async function send(file) {
-  const result = await readFileAsText(file);
-
-  const data = {
-    name: file.name,
-    text: result,
+function getOptions() {
+  return {
+    preset: document.getElementById('preset').value,
   };
+}
 
-  const json = await fetch('/api', {
+function getMinifiedCss(data = {
+  preset: currentPreset,
+  text: css,
+  name: filename,
+}) {
+  return fetch('/api', {
     method: 'post',
     body: JSON.stringify(data),
     headers: new Headers({
@@ -42,10 +46,28 @@ async function send(file) {
 
     return response.json();
   });
+}
 
-  const text = json.error ? `${json.error.name}: ${json.error.reason}` : json.text;
+function setOutput(json) {
+  document.querySelector('output').textContent = json.error ?
+    `${json.error.name}: ${json.error.reason}` :
+    json.text;
+}
 
-  document.querySelector('output').textContent = text;
+/**
+ * @param {File} file
+ */
+async function send(file) {
+  const { preset } = getOptions();
+  const text = await readFileAsText(file);
+  css = text;
+  filename = file.name;
+
+  setOutput(await getMinifiedCss({
+    preset,
+    text,
+    name: file.name,
+  }));
 }
 
 function handleDragOver(evt) {
@@ -71,18 +93,24 @@ document.getElementById('the-file').addEventListener('change', (evt) => {
   send(file);
 });
 
+// When the preset option changes, send another request to the server to get new css.
+document.getElementById('preset').addEventListener('change', async (evt) => {
+  currentPreset = evt.currentTarget.value;
+  if (css) {
+    setOutput(await getMinifiedCss());
+  }
+});
+
 document.body.addEventListener('dragover', handleDragOver);
 document.body.addEventListener('dragleave', handleDragCancel);
 document.body.addEventListener('drop', handleDrop);
 
-/*
 document.querySelector('.show-options').addEventListener('click', (evt) => {
   const willShow = !document.body.classList.contains('options-visible');
   const button = evt.currentTarget;
-  const optionsPanel = document.querySelector('.options-panel');
+  const optionsPanel = document.getElementById('options-panel');
   button.textContent = willShow ? button.dataset.hideContent : button.dataset.showContent;
   document.body.classList.toggle('options-visible');
   button.setAttribute('aria-expanded', willShow);
   optionsPanel.setAttribute('aria-hidden', !willShow);
 });
-*/
