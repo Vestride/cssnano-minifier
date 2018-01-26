@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "tsc",
+    "watch": "tsc -w"
   },
   "author": "",
   "license": "ISC",
@@ -18,5 +20,8 @@
     "helmet": "^3.9.0",
     "postcss": "^6.0.16",
     "pug": "^2.0.0-rc.4"
+  },
+  "devDependencies": {
+    "typescript": "^2.6.2"
   }
 }
