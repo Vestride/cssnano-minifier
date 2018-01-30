@@ -59,7 +59,8 @@ async function getMinifiedCss(data = {
 }
 
 function setOutput(json: ApiResponse): void {
-  document.querySelector('output').textContent = json.error ?
+  const output = document.querySelector('.output') as HTMLTextAreaElement;
+  output.value = json.error ?
     `${json.error.name}: ${json.error.reason}` :
     json.text;
 }
@@ -117,9 +118,16 @@ function handleOptionsToggle(evt: MouseEvent): void {
   optionsPanel.setAttribute('aria-hidden', (!willShow).toString());
 }
 
+function selectOutputText(evt: FocusEvent): void {
+  setTimeout(() => {
+    (evt.target as HTMLTextAreaElement).select();
+  }, 0);
+}
+
 document.getElementById('the-file').addEventListener('change', handleFileChange);
 document.getElementById('preset').addEventListener('change', handlePresetChange);
 document.querySelector('.show-options').addEventListener('click', handleOptionsToggle);
+document.querySelector('.output').addEventListener('focus', selectOutputText);
 document.body.addEventListener('dragover', handleDragOver);
 document.body.addEventListener('dragleave', handleDragCancel);
 document.body.addEventListener('drop', handleDrop);
