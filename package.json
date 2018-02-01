@@ -1,27 +1,34 @@
 {
   "name": "cssnano-online",
+  "description": "Drag and drop css minification with cssnano",
   "version": "1.0.0",
-  "description": "",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build": "tsc",
-    "watch": "tsc -w"
+    "build": "webpack --mode development",
+    "deploy": "webpack",
+    "watch": "webpack --mode development --watch"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "codemirror": "^5.34.0",
     "compression": "^1.7.1",
     "cssnano": "^4.0.0-rc.2",
     "cssnano-preset-advanced": "^4.0.0-rc.2",
     "cssnano-preset-default": "^4.0.0-rc.2",
     "express": "^4.16.2",
-    "helmet": "^3.9.0",
+    "helmet": "^3.10.0",
     "postcss": "^6.0.16",
-    "pug": "^2.0.0-rc.4"
+    "pug": "^2.0.0-rc.4",
+    "tiny-emitter": "^2.0.2",
+    "typescript": "^2.7.1"
   },
   "devDependencies": {
-    "typescript": "^2.6.2"
+    "ts-loader": "^4.0.0-beta.0",
+    "webpack": "^4.0.0-beta.0",
+    "webpack-cli": "^2.0.4"
   }
 }

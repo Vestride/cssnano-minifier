@@ -29,7 +29,12 @@ app.post('/api', jsonParser, (req, res) => {
   const { name, text, preset } = req.body;
 
   if (!text) {
-    return res.sendStatus(400);
+    return res.status(400).json({
+      error: {
+        name: 'Oops',
+        reason: 'Missing `text` field in request body.',
+      },
+    });
   }
 
   return postcss([
