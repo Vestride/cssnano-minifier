@@ -91,7 +91,6 @@ footer a {
   align-content: center;
   background-color: rgb(250, 250, 250);
   border-right: 1px solid #404040;
-  text-align: center;
 }
 
 .can-drop .drop-zone {
@@ -110,4 +109,9 @@ footer a {
 .drop-zone,
 .output {
   width: 100%;
+  overflow: hidden;
+}
+
+.output .CodeMirror {
+  height: 100%;
 }

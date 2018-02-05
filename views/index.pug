@@ -22,7 +22,11 @@ html.no-js(lang="")
         p
           span or pick a file&#32;
           input(type="file", id="the-file")
-      textarea.output
+        div
+          span or paste css here&#32;
+          textarea(id="paste-input")
+      .output
+        textarea
       footer
         button.show-options(aria-controls="options-panel", aria-expanded="false", data-show-content="Show options", data-hide-content="Hide options") Show options
         div Full list of optimizations <a href="http://cssnano.co/optimisations/">http://cssnano.co/optimisations/</a>

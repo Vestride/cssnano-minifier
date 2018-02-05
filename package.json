@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "copy-codemirror-css": "cp ./node_modules/codemirror/lib/codemirror.css ./public/css/",
     "build": "webpack --mode development",
     "deploy": "webpack",
     "watch": "webpack --mode development --watch"
