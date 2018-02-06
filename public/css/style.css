@@ -130,10 +130,12 @@ a:hover {
   align-items: center;
   cursor: pointer;
   padding: 10px 20px;
+  color: inherit;
 }
 
 .side-panel__action:hover {
   background-color: rgb(244, 244, 244);
+  text-decoration: inherit;
 }
 
 .side-panel__action-inner {
