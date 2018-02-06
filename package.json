@@ -6,11 +6,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "copy-codemirror-css": "cp ./node_modules/codemirror/lib/codemirror.css ./public/css/",
     "build": "webpack --mode development",
     "deploy": "webpack --mode production",
     "watch": "webpack --mode development --watch",
-    "heroku-postbuild": "npm run copy-codemirror-css && npm run deploy"
+    "heroku-postbuild": "npm run deploy"
   },
   "author": "",
   "license": "ISC",

@@ -6,8 +6,7 @@ html(lang="en")
     meta(name="description" content="Drag and drop css minification with cssnano")
     meta(name="viewport" content="width=device-width, initial-scale=1")
 
-    link(rel="stylesheet" href="css/style.css")
-    link(rel="stylesheet" href="css/codemirror.css")
+    style!= inlineCss
   body
     nav.side-panel#side-panel(aria-hidden="false")
       h1.side-panel__content Drop a CSS file
