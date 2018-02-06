@@ -23,8 +23,9 @@ class App {
     preset: 'default',
   };
   dragAndDrop: DragAndDrop;
-  editor: any;
   panel: SidePanel;
+  editor: any;
+  clipboard: any;
 
   constructor() {
     document.getElementById('preset').addEventListener('change', this._handlePresetChange.bind(this));
@@ -43,6 +44,15 @@ class App {
         lineWrapping: true,
         viewportMargin: Infinity,
         dragDrop: false,
+      });
+    });
+
+    import(/* webpackChunkName: 'clipboard' */'clipboard').then(({ default: Clipboard }) => {
+      const _this = this;
+      this.clipboard = new Clipboard('.copy-code', {
+        text() {
+          return _this.editor.getValue();
+        }
       });
     });
   }
