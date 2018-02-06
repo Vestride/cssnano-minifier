@@ -8,8 +8,9 @@
     "start": "node index.js",
     "copy-codemirror-css": "cp ./node_modules/codemirror/lib/codemirror.css ./public/css/",
     "build": "webpack --mode development",
-    "deploy": "webpack",
-    "watch": "webpack --mode development --watch"
+    "deploy": "webpack --mode production",
+    "watch": "webpack --mode development --watch",
+    "heroku-postbuild": "npm run copy-codemirror-css && npm run deploy"
   },
   "author": "",
   "license": "ISC",
@@ -31,5 +32,9 @@
     "typescript": "^2.7.1",
     "webpack": "^4.0.0-beta.0",
     "webpack-cli": "^2.0.4"
+  },
+  "engines": {
+    "node": "8.x",
+    "npm": "5.x"
   }
 }
