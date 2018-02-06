@@ -4,7 +4,9 @@ module.exports = {
   devtool: 'cheap-source-map',
   entry: './src/app.ts',
   output: {
-    path: path.resolve(path.join(__dirname, './public/js')),
+    path: path.resolve(path.join(__dirname, './public')),
+    filename: 'js/[name].js',
+    chunkFilename: 'js/[name].js',
   },
   resolve: {
     extensions: ['.ts', '.js'],

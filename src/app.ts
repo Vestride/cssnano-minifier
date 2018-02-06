@@ -1,6 +1,5 @@
-import CodeMirror from 'codemirror';
-import 'codemirror/mode/css/css';
 import DragAndDrop from './drag-and-drop';
+import SidePanel from './side-panel';
 
 interface ApiResponse {
   text?: string;
@@ -24,23 +23,27 @@ class App {
     preset: 'default',
   };
   dragAndDrop: DragAndDrop;
-  editor: CodeMirror;
+  editor: any;
+  panel: SidePanel;
 
   constructor() {
     document.getElementById('preset').addEventListener('change', this._handlePresetChange.bind(this));
-    document.querySelector('.show-options').addEventListener('click', this._handleOptionsToggle.bind(this));
-    document.querySelector('.output').addEventListener('focus', this._selectOutputText.bind(this));
     document.getElementById('paste-input').addEventListener('input', this._handlePasteInputChange.bind(this));
 
     this.dragAndDrop = new DragAndDrop();
     this.dragAndDrop.on('droppedfile', this._handleDrop.bind(this));
+    this.panel = new SidePanel();
 
     const outputEditor = document.querySelector('.output textarea');
-    this.editor = CodeMirror.fromTextArea(outputEditor, {
-      mode: 'text/css',
-      lineNumbers: true,
-      lineWrapping: true,
-      viewportMargin: Infinity,
+
+    import(/* webpackChunkName: 'codemirror' */'./codemirror').then(({ default: CodeMirror }) => {
+      this.editor = CodeMirror.fromTextArea(outputEditor, {
+        mode: 'text/css',
+        lineNumbers: true,
+        lineWrapping: true,
+        viewportMargin: Infinity,
+        dragDrop: false,
+      });
     });
   }
 
@@ -114,33 +117,21 @@ class App {
     }
   }
 
-  _handleOptionsToggle(evt: MouseEvent): void {
-    const willShow = !document.body.classList.contains('options-visible');
-    const button = evt.currentTarget as HTMLButtonElement;
-    const optionsPanel = document.getElementById('options-panel');
-    button.textContent = willShow ? button.dataset.hideContent : button.dataset.showContent;
-    document.body.classList.toggle('options-visible');
-    button.setAttribute('aria-expanded', willShow.toString());
-    optionsPanel.setAttribute('aria-hidden', (!willShow).toString());
-  }
-
-  _selectOutputText(evt: FocusEvent): void {
-    setTimeout(() => {
-      (evt.target as HTMLTextAreaElement).select();
-    }, 0);
-  }
-
   _handleDrop(data: { file: File }) {
     this.send(data.file);
+    this.panel.toggle(false);
   }
 
   _handlePasteInputChange(evt: KeyboardEvent) {
     const input = (evt.target as HTMLInputElement);
-    this.state.text = input.value;
+    this.state.text = input.value.trim();
     this.state.filename = 'pasted-css.css';
-    console.log('changed:', this.state.text);
-    input.value = '';
-    this.setMinifiedOutputFromState();
+    input.blur();
+    if (this.state.text) {
+      input.value = '';
+      this.setMinifiedOutputFromState();
+      this.panel.toggle(false);
+    }
   }
 }
 
