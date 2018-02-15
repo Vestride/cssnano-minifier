@@ -53,6 +53,8 @@ a:hover {
 .side-panel {
   position: fixed;
   z-index: 3;
+  display: flex;
+  flex-direction: column;
   padding: 20px 0;
   height: 100%;
   min-width: 264px;
@@ -190,6 +192,13 @@ a:hover {
   cursor: inherit;
 }
 
+.side-panel__footer {
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
 .copy-code {
   position: fixed;
   z-index: 3;
@@ -230,13 +239,13 @@ a:hover {
   fill: #ffffff;
 }
 
-footer {
+.site-footer {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 10px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: end;
   height: 40px;
   padding-left: 16px;
   padding-right: 16px;
@@ -244,7 +253,7 @@ footer {
   color: #ffffff;
 }
 
-footer a {
+.site-footer a {
   color: #ffffff;
 }
 
