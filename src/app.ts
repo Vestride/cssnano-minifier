@@ -47,9 +47,9 @@ class App {
       });
     });
 
-    import(/* webpackChunkName: 'clipboard' */'clipboard').then(({ default: Clipboard }) => {
+    import(/* webpackChunkName: 'clipboard' */'clipboard').then(({ default: ClipboardJS }) => {
       const _this = this;
-      this.clipboard = new Clipboard('.copy-code', {
+      this.clipboard = new ClipboardJS('.copy-code', {
         text() {
           return _this.editor.getValue();
         }
