@@ -63,7 +63,7 @@ class App {
 
       // Resolve promise when the reader finishes.
       reader.onload = () => {
-        resolve(reader.result);
+        resolve(reader.result as string);
       };
 
       // Start reader.

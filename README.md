@@ -1,6 +1,6 @@
 # cssnano-minifier
 
-> Drag and drop css minification with [cssnano](http://cssnano.co/)
+> Drag and drop css minification with [cssnano](https://cssnano.co)
 
 Try it out here https://cssnano.herokuapp.com
 

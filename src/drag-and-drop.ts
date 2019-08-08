@@ -1,4 +1,4 @@
-import TinyEmitter from 'tiny-emitter';
+import { TinyEmitter } from 'tiny-emitter';
 
 export default class DragAndDrop extends TinyEmitter {
   constructor(public dropTarget: HTMLElement = document.body) {
