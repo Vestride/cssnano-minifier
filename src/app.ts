@@ -1,3 +1,5 @@
+import './style.css';
+import 'codemirror/lib/codemirror.css';
 import DragAndDrop from './drag-and-drop';
 import SidePanel from './side-panel';
 
@@ -8,7 +10,7 @@ interface ApiResponse {
     name: string;
     reason: string;
   };
-};
+}
 
 interface State {
   text: string;
@@ -35,9 +37,9 @@ class App {
     this.dragAndDrop.on('droppedfile', this._handleDrop.bind(this));
     this.panel = new SidePanel();
 
-    const outputEditor = document.querySelector('.output textarea');
+    const outputEditor: HTMLTextAreaElement = document.querySelector('.output textarea');
 
-    import(/* webpackChunkName: 'codemirror' */'./codemirror').then(({ default: CodeMirror }) => {
+    import(/* webpackChunkName: 'codemirror' */ './codemirror').then(({ default: CodeMirror }) => {
       this.editor = CodeMirror.fromTextArea(outputEditor, {
         mode: 'text/css',
         lineNumbers: true,
@@ -47,12 +49,12 @@ class App {
       });
     });
 
-    import(/* webpackChunkName: 'clipboard' */'clipboard').then(({ default: ClipboardJS }) => {
+    import(/* webpackChunkName: 'clipboard' */ 'clipboard').then(({ default: ClipboardJS }) => {
       const _this = this;
       this.clipboard = new ClipboardJS('.copy-code', {
         text() {
           return _this.editor.getValue();
-        }
+        },
       });
     });
   }
@@ -79,7 +81,7 @@ class App {
   }
 
   async getMinifiedCss(data?: State): Promise<ApiResponse> {
-    const response = await fetch('/api', {
+    const response = await fetch('/api/minify', {
       method: 'post',
       body: JSON.stringify(data || this.state),
       headers: new Headers({
@@ -101,9 +103,7 @@ class App {
   }
 
   setOutput(json: ApiResponse): void {
-    const content = json.error ?
-      `${json.error.name}: ${json.error.reason}` :
-      json.text
+    const content = json.error ? `${json.error.name}: ${json.error.reason}` : json.text;
     this.editor.setValue(content);
   }
 
@@ -133,7 +133,7 @@ class App {
   }
 
   _handlePasteInputChange(evt: KeyboardEvent) {
-    const input = (evt.target as HTMLInputElement);
+    const input = evt.target as HTMLInputElement;
     this.state.text = input.value.trim();
     this.state.filename = 'pasted-css.css';
     input.blur();
