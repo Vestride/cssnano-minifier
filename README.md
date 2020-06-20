@@ -2,6 +2,6 @@
 
 > Drag and drop css minification with [cssnano](https://cssnano.co)
 
-Try it out here https://cssnano.herokuapp.com
+Try it out here <https://cssnano-minifier.vercel.app/>
 
 It's currently on Heroku's free tier, so it might need some time to wake up before it's ready for use.
