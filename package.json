@@ -3,38 +3,37 @@
   "description": "Drag and drop css minification with cssnano",
   "version": "1.0.0",
   "private": true,
-  "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "vercel dev",
     "build": "webpack --mode development",
     "deploy": "webpack --mode production",
-    "watch": "webpack --mode development --watch",
-    "heroku-postbuild": "npm run deploy"
+    "watch": "webpack --mode development --watch"
   },
-  "author": "",
+  "author": "Glen Cheney",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "clipboard": "^2.0.6",
     "codemirror": "^5.54.0",
-    "compression": "^1.7.4",
     "cssnano": "^4.1.10",
     "cssnano-preset-advanced": "^4.0.7",
     "cssnano-preset-default": "^4.0.7",
-    "express": "^4.17.1",
-    "helmet": "^3.23.1",
     "postcss": "^7.0.32",
-    "pug": "^3.0.0",
     "tiny-emitter": "^2.1.0"
   },
   "devDependencies": {
+    "@types/codemirror": "0.0.96",
+    "@types/cssnano": "^4.0.0",
+    "@vercel/node": "^1.7.1",
+    "css-loader": "^3.6.0",
+    "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.9.0",
     "ts-loader": "^7.0.5",
     "typescript": "^3.9.5",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"
   },
   "engines": {
-    "node": "10.x",
+    "node": "12.x",
     "npm": "6.x"
   }
 }
