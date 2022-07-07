@@ -33,7 +33,7 @@
     "webpack-cli": "^3.3.12"
   },
   "engines": {
-    "node": "12.x",
-    "npm": "6.x"
+    "node": "16.x",
+    "npm": "8.x"
   }
 }
