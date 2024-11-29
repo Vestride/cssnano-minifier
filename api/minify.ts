@@ -1,4 +1,4 @@
-import { NowRequest, NowResponse } from '@vercel/node';
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 import postcss from 'postcss';
 import cssnano from 'cssnano';
 
@@ -10,7 +10,7 @@ function minify(css: string, preset = 'default', filename = undefined) {
   });
 }
 
-export default async (request: NowRequest, response: NowResponse) => {
+export default async (request: VercelRequest, response: VercelResponse) => {
   const { name, text, preset } = request.body;
 
   if (!text) {
