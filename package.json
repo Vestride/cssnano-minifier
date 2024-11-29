@@ -23,6 +23,7 @@
   "devDependencies": {
     "@types/codemirror": "0.0.96",
     "@types/cssnano": "^4.0.0",
+    "@types/node": "^22.10.1",
     "@vercel/node": "^3",
     "css-loader": "^7",
     "html-webpack-plugin": "^5",
@@ -33,7 +34,7 @@
     "webpack-cli": "^5"
   },
   "engines": {
-    "node": "16.x",
-    "npm": "8.x"
+    "node": "22.x",
+    "npm": "10.x"
   }
 }
