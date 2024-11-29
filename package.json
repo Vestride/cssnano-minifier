@@ -14,10 +14,10 @@
   "dependencies": {
     "clipboard": "^2.0.6",
     "codemirror": "^5.54.0",
-    "cssnano": "^4.1.10",
-    "cssnano-preset-advanced": "^4.0.7",
-    "cssnano-preset-default": "^4.0.7",
-    "postcss": "^7.0.32",
+    "cssnano": "^7",
+    "cssnano-preset-advanced": "^7",
+    "cssnano-preset-default": "^7",
+    "postcss": "^8",
     "tiny-emitter": "^2.1.0"
   },
   "devDependencies": {
